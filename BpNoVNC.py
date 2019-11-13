@@ -6,7 +6,7 @@ from websocket import create_connection
 import execjs,argparse
 
 
-class Burp(object):
+class BpNoVNC(object):
     def __init__(self, target, password, tokens=[""], maxsize=5):
         self.target = target
         self.maxsize = maxsize
@@ -294,5 +294,5 @@ if __name__ == '__main__':
     if  args.passfile and  args.target:
         with open(args.passfile) as f:
             passwords = f.readlines()
-        Burp(args.target, passwords, tokens,args.maxsize).run()
+        BpNoVNC(args.target, passwords, tokens,args.maxsize).run()
 
