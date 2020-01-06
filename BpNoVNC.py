@@ -26,7 +26,7 @@ class BpNoVNC(object):
         wsurl = "{0}/?token={1}".format(self.target, token)
         self._show("[*]",token,password)
         try:
-            ws = create_connection(wsurl, http_proxy_host="127.0.0.1", http_proxy_port=8022,
+            ws = create_connection(wsurl,
                                    subprotocols=["binary", "base64"])
             result = ws.recv()
             # print(1, result)
