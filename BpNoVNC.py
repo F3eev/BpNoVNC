@@ -24,7 +24,7 @@ class BpNoVNC(object):
 
         password, token = self.tasks.get()
         wsurl = "{0}/?token={1}".format(self.target, token)
-        self._show("[*]",token,password)
+        #self._show("[*]",token,password)
         try:
             ws = create_connection(wsurl,
                                    subprotocols=["binary", "base64"])
@@ -277,6 +277,21 @@ return {'encrypt': encrypt}; // Public interface
         gevent.joinall(allr)
 
 
+
+def show_name():
+        print(r"""
+B)bbbb           N)n   nn         V)    vv N)n   nn   C)ccc  
+B)   bb          N)nn  nn         V)    vv N)nn  nn  C)   cc 
+B)bbbb   p)PPPP  N) nn nn  o)OOO  V)    vv N) nn nn C)       
+B)   bb  p)   PP N)  nnnn o)   OO  V)  vv  N)  nnnn C)       
+B)    bb p)   PP N)   nnn o)   OO   V)vv   N)   nnn  C)   cc 
+B)bbbbb  p)PPPP  N)    nn  o)OOO     V)    N)    nn   C)ccc  
+         p)                                                  
+         p)                                           
+                                                        V 1.o
+                                                        BY Freev
+        """)
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-t', '--target', help=" -t ws://1.2.1.1:6080/")
@@ -294,5 +309,8 @@ if __name__ == '__main__':
     if  args.passfile and  args.target:
         with open(args.passfile) as f:
             passwords = f.readlines()
+        show_name()
         BpNoVNC(args.target, passwords, tokens,args.maxsize).run()
 
+    else:
+        show_name()
